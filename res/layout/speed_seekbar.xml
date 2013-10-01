@@ -1,0 +1,6 @@
+<SeekBar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/speedSeek"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:indeterminate="false"
+    android:max="1000" />

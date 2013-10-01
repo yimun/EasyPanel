@@ -1,0 +1,32 @@
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="大小："
+            android:id="@+id/tvSize" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignBottom="@+id/sbSize" android:gravity="center"/>
+    <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbSize"
+            android:layout_toRightOf="@+id/tvSize" android:layout_alignParentRight="true" android:max="100"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceMedium" android:text="位置："
+              android:id="@+id/tvPosition"
+              android:layout_alignBottom="@+id/sbPos" android:layout_alignParentLeft="true"
+              android:layout_alignTop="@+id/sbPos" android:gravity="center"/>
+    <SeekBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/sbPos"
+             android:max="100"
+             android:layout_marginTop="20dp"
+             android:layout_below="@+id/sbSize" android:layout_toRightOf="@+id/tvPosition"
+             android:layout_alignParentRight="true"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重置"
+            android:id="@+id/btnReset" android:layout_below="@+id/sbPos" android:layout_centerHorizontal="true"
+            android:layout_marginTop="21dp"/>
+</RelativeLayout>
