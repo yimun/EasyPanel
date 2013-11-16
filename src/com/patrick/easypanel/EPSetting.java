@@ -42,23 +42,23 @@ public class EPSetting extends PreferenceActivity {
 	PackageManager pm ;
 	List<ResolveInfo> infos;
 	int index;
-	ArrayList<CharSequence> classes;
-	ArrayList<CharSequence> names;
-	
-	Context m_context;
-	Preference wallpaper;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		m_context = this;
-		setTheme(android.R.style.Theme_DeviceDefault_Light);
-		PreferenceManager.setDefaultValues(this, R.xml.ep_settings, false);
-		addPreferencesFromResource(R.xml.ep_settings);
-		m_shared = PreferenceManager.getDefaultSharedPreferences(this);
+    ArrayList<CharSequence> names;
+
+    Context m_context;
+    Preference wallpaper;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        m_context = this;
+        setTheme(android.R.style.Theme_DeviceDefault_Light);
+        PreferenceManager.setDefaultValues(this, R.xml.ep_settings, false);
+        addPreferencesFromResource(R.xml.ep_settings);
+        m_shared = PreferenceManager.getDefaultSharedPreferences(this);
         int statusBarHeight = Toolkit.getStatusHeight(this);
         m_shared.edit().putInt("statusBarHeight",statusBarHeight).commit();
         initPreferences();
-		
+
+        ArrayList<CharSequence> classes;
 	}
 
     private void initPreferences() {
