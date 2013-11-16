@@ -32,6 +32,11 @@ import android.widget.Toast;
 
 import static com.patrick.easypanel.R.drawable.*;
 
+/**
+ * 后台服务用于接收是否绘图的广播，获取当前的应用列表
+ * @author yimu
+ *
+ */
 public class FlipService extends Service {
 
     public static ArrayList<FunctionItem> currentItems;
@@ -71,15 +76,18 @@ public class FlipService extends Service {
 			// TODO Auto-generated method stub
             if (intent == null)
                 return;
-			if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())){
+            // 屏幕亮起，添加View
+			if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())){ 
 				tryAddView(context);
 			}
-            else if (Intent.ACTION_CONFIGURATION_CHANGED.equals(intent.getAction())){
+			// 设置更改，更新View
+            else if (Intent.ACTION_CONFIGURATION_CHANGED.equals(intent.getAction())){ // 设置更改
                 if (isAdded)
                     m_view.updateTouchView();
             }
 		}
 	};
+	
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
@@ -94,7 +102,8 @@ public class FlipService extends Service {
 		m_shared = PreferenceManager.getDefaultSharedPreferences(this);
 		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);  
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER); 
-        infos = m_pm.queryIntentActivities(mainIntent, 0);//PackageManager.0);
+        infos = m_pm.queryIntentActivities(mainIntent, 0);// 获取所有主activity
+        
 
 		isAdded = false;
 
@@ -104,7 +113,7 @@ public class FlipService extends Service {
 		final IntentFilter filter = new IntentFilter();
 	    filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_CONFIGURATION_CHANGED);
-	    registerReceiver(receiver, filter);
+	    registerReceiver(receiver, filter); // 在服务中注册广播接收器
 
 
         Intent epIntent = new Intent(getApplicationContext(), EPSetting.class);
